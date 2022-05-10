@@ -1,7 +1,7 @@
 PImage img;
 int[][] Linear = new int[1000000][4];
 int[][] Poly = new int[10000000][6];
-int threshhold = 0;
+int threshhold = 2;
 int tolerence = 2;
 int[][] Image = new int[pixelWidth][pixelHeight];
 void setup(){
@@ -49,8 +49,8 @@ int[][] LinearEdge(int[] pixels){
   for(int j = 1; j < tolerence; j++){
    for( int h = 1; h < tolerence; h++){
      
-    if(pixels[i]>color(200)&&pixels[i]<color(255)){
-      if(pixels[i]==pixels[i+(j*pixelHeight)+h]){
+    if(pixels[i]>color(100)&&pixels[i]<color(240)){
+      if(pixels[i]>pixels[i+(j*pixelHeight)+h]+color(threshhold)&&pixels[i]<pixels[i+(j*pixelHeight)+h]-color(threshhold)){
       
       Linear[counter][0] = floor(i/pixelHeight);
       Linear[counter][1] =  i%pixelWidth;
@@ -81,6 +81,43 @@ void LinearDraw(){
 }
 
 int[][] Polyedge(int[] pixels[]){
+  int x = int(random(0,pixelWidth));
+  int y = int(random(0,pixelHeight));
+  int pos = pixelHeight*y+x;
+  int counter = pos+1;
+  int w = color(255);
+  int b = color(0);
+  while pos =! counter{
+    
+    int[] matrix = new int[4]
+    matrix = [pixels[i], pixels[i+1], 
+    pixels[i+pixelHeight], pixels[i+pixelHeight+1]]
+    
+    switch(matrix){
+      
+     case [w,w,w,w]:
+     Poly=Polyedge(pixels[]);
+     break;
+     
+     case [w,w,w,b]:
+     pos = pixels[i+1];
+     
+     case [b,w,w,w]:
+     pos = pixels[i-pixelHeight];
+     
+     case [w,b,w,w]:
+     pos = pixels[i+1];
+     
+     case[w,w,b,w]:
+     pos = pixels[i-1];
+     
+     case[b,b,w,w]
+  
+         
+      
+    }
+    
+  }
   
   return pixels;
   
